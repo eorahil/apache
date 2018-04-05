@@ -5,11 +5,11 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 package 'httpd'
 
-file '/var/www/html/index.html' do
-  content "<h1>Hola mundo</h1>
-  <h1>IP: #{node['ipaddress']}<h1>
-  <h1>HOST: #{node['hostname']}<h1>
-"
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
+  owner 'root'
+  mode '0755'
+  action :create
 end
 
 service 'httpd' do

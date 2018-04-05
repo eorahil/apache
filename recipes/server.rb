@@ -6,7 +6,10 @@
 package 'httpd'
 
 file '/var/www/html/index.html' do
-  content '<h1>Hola mundo</h1>'
+  content "<h1>Hola mundo</h1>
+  <h1>IP: #{node['ipaddress']}<h1>
+  <h1>HOST: #{node['hostname']}<h1>
+"
 end
 
 service 'httpd' do
